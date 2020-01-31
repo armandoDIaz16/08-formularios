@@ -1,0 +1,19 @@
+b4 container y container-fluid
+con container nos sirve para poder contener elementos dentro de un cuadro o tipo panel 
+con container fluid es para que dicho contenedor ocupe todo el espacio disponible
+
+nota***** de angular
+nunca olvidar importar un elemento pero tambien añadirlo al array de IMPORTS!!!!
+SI TIENE COLOR TENUE ES PORQUE NO SE USA
+
+CLASES DE NGMODEL
+ng-untoched campo sin cambios
+ng touched campo modificado
+ng-valid paso las validaciones impuestas
+ng-invald no paso las validaciones impuestas
+ng dirty es ususario esta tecleando
+ng-pristine  tiene su valor por default
+
+podemos agregar el atributo required al input y al from agregarle el atributo novalidate="" para que no se encargue html5 de las
+validaciones si no nosotros 
+
