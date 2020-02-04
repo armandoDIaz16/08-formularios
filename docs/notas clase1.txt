@@ -17,3 +17,24 @@ ng-pristine  tiene su valor por default
 podemos agregar el atributo required al input y al from agregarle el atributo novalidate="" para que no se encargue html5 de las
 validaciones si no nosotros 
 
+
+
+Clase 2 #######################
+Para enviar todo un formulario desde el html al ts creamos un alias con # en el nodo que queremos enviar al TS y lo enviamos entre parentesis por el metodo
+recibimos el objeto y le colocamos el tipo Ngform (lo importamos desde @angular/forms)
+
+ahora para enviar datos del ts al html lo haremos poniendo en corchetes el [NgModel] y lo igualremos a un objeto que tengamos, cree una interface usuario para que los datos 
+coincidieran aun mas, luego al NgModel le pasamos el objeto usuario  [ngModel]="usuario.apellido" y los mostrará en el html
+Si queremos que al ejecutar el metodo tambien se editen los valores del objeto usuario usamos  [(ngModel)] de lo contrario lo mantiene intacto
+
+Clase 3 errores ######################
+Para acceder a los errores debemos entrar a NgForm.controls.nombreDelElemento.errors dentro del onjeto errors
+para determinar si debemos indicarle al usuarios sus errores lo haremos desde el css con las clases de angunar 
+y si algun elemento tiene esas clases les aplicará nuestros estilos .ng-invalid y .ng-touched 
+para excluir el formulario vamos a colocar :not(form) podemos excluir mas elementos solo hace falta pasarlos como parametro
+
+ahora para mostrar un error al usuario vamos a usar las etiquetas del bostrap y el se dará cuenta que tiene errores en su captura
+usaremos un ngIf para saber si tiene en el arreglo de errores el elemento que estamos buscando pero como lo obtenemos?
+creamos una variable local con #value y le asignamos el NgModel en turno que es el input nombre y de ahi obtenemos value.errors?.required
+si existe entonces mostramos el div 
+Nota en NgIf para comparar si existe el elemento usamos controls?. y asi nos daremos cuenta si existe el atributo o no

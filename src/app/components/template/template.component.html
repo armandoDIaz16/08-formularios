@@ -1,6 +1,6 @@
 <h4>Formularios <small>template</small></h4>
 <hr>
-<form (ngSubmit)="guardar()" novalidate="">
+<form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate="">
 
   <div>
 
@@ -13,8 +13,16 @@
                placeholder="Nombre"
                name="nombre"
                required 
-               minlength="5"
-               ngModel>
+               minlength="5"          
+               [ngModel]="usuario.nombre"
+               #nombrehtml="ngModel">
+              
+               <div *ngIf="nombrehtml.errors?.required" class="alert alert-danger" role="alert">
+                Debe completar este campo
+              </div>
+              <div *ngIf="nombrehtml.errors?.minlength" class="alert alert-danger" role="alert">
+                Debe contener min 5 caracteres
+              </div>
       </div>
     </div>
 
@@ -25,10 +33,14 @@
         <input class="form-control"
                type="text"
                placeholder="Apellido"
-               name="nombre"
-               required 
-               minlength="5"
-               ngModel>
+               name="apellido"
+               required                
+               [ngModel]="usuario.apellido"
+               #apellidohtml="ngModel">
+              
+               <div *ngIf="apellidohtml.errors?.required" class="alert alert-danger" role="alert">
+                Debe completar este campo
+              </div>          
       </div>
     </div>
 
@@ -41,10 +53,19 @@
       <input class="form-control"
              type="email"
              placeholder="Correo electrónico"
-             name="nombre"
+             name="correo"
                required 
-               minlength="5"
-             ngModel>
+               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+               [ngModel]="usuario.correo"
+               #correohtml="ngModel">
+              
+               <div *ngIf="correohtml.errors?.required" class="alert alert-danger" role="alert">
+                Debe completar este campo
+              </div>   
+              <div *ngIf="correohtml.errors?.pattern" class="alert alert-danger" role="alert">
+                Debe introducir un correo válido
+              </div>   
+
     </div>
   </div>
 
