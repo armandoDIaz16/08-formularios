@@ -38,3 +38,9 @@ usaremos un ngIf para saber si tiene en el arreglo de errores el elemento que es
 creamos una variable local con #value y le asignamos el NgModel en turno que es el input nombre y de ahi obtenemos value.errors?.required
 si existe entonces mostramos el div 
 Nota en NgIf para comparar si existe el elemento usamos controls?. y asi nos daremos cuenta si existe el atributo o no
+
+Clase $#############
+En esta clase aprenderemos a colocar los mensajes de error solo cuando el usuario ha tocado el elemento
+agregaremos un atributo  [ngClass]="{'clase de css':  }" y esa clase solo aparecera cuando se cumpla dicha condición 
+tambien aprendimos para bloquear un boton de formulario hasta que el fomulario este valido colocando el atributo [disable]="forma.invalid"
+me quede en donde creamos el select y lo traemos desde el angular falta los check
