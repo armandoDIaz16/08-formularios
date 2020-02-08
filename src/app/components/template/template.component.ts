@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Usuario } from '../../models/usuario.model';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -9,6 +11,10 @@ import { Usuario } from '../../models/usuario.model';
   styleUrls: ['../../app.component.css']
 })
 export class TemplateComponent implements OnInit {
+
+  // icons the fontAwesome 
+  faCoffee = faCoffee;
+  deleteIcon = faTrashAlt;
 
   usuario: Usuario = {
     nombre: null,

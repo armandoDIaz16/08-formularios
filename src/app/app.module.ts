@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { TemplateComponent } from './components/template/template.component';
 import { DataComponent } from './components/data/data.component';
 
+// Font Awesome
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +17,8 @@ import { DataComponent } from './components/data/data.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
