@@ -1,5 +1,5 @@
 <h4>Formularios <small>data</small></h4>
-<hr><fa-icon [icon]="faHdd"></fa-icon>
+<hr>
 <form [formGroup]="forma" (ngSubmit)="enviarData()" novalidate >
 
   <div>
@@ -39,13 +39,28 @@
     </div>
   </div>
 
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="col-md-8" formArrayName="pasatiempos">
+      <input *ngFor="let pasatiempo of forma.controls['pasatiempos'].controls, let i = index"
+      class="form-control"
+             type="text"
+             placeholder=""
+             [formControlName]="i">
+      </div>
+      <button type="button"
+      (click)="agregarItem()"
+       class="btn btn-outline-primary">
+        <fa-icon [icon]="faHdd"></fa-icon> Agregar
+      </button>
+  </div>
 
 
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
     <div class="input-group col-md-8">
       <button type="submit" class="btn btn-outline-primary">
-        Guardar
+        <fa-icon [icon]="faHdd"></fa-icon> Guardar
       </button>
     </div>
   </div>

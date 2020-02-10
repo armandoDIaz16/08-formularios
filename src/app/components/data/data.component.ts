@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {FormGroup, FormControl, Validators, FormArray} from '@angular/forms';
 import Swal from 'sweetalert2';
 import { faHdd } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,13 +13,23 @@ export class DataComponent implements OnInit {
   forma: FormGroup;
   faHdd = faHdd;
 
+  usuario :object = {
+    nombre : '',
+    apellido : '',
+    correo : '',
+    pasatiempos: ['']
+  }
+
 
   constructor() {
     this.forma = new FormGroup({
       // 'nombre' : new FormControl(valor por defecto, regla de valudacion o relgas en [], reglas async)
       nombre : new FormControl('', Validators.required),
       apellido : new FormControl('', Validators.required),
-      correo : new FormControl('', [Validators.email, Validators.required])
+      correo : new FormControl('', [Validators.email, Validators.required]),
+      pasatiempos: new FormArray([
+         new FormControl('' , Validators.required)
+        ])
     });
 
   }
@@ -27,24 +37,18 @@ export class DataComponent implements OnInit {
   ngOnInit() {
   }
 
+// validaciones personalizadas
+
+
+  agregarItem(){
+(<FormArray> this.forma.controls['pasatiempos']).push(
+    new FormControl('',Validators.required)
+) 
+  }
+
   enviarData() {
-console.log(this.forma);
-    Swal.fire({
-      title: '<strong>HTML <u>example</u></strong>',
-      icon: 'info',
-      html:
-        'You can use <b>bold text</b>, ' +
-        '<a href="//sweetalert2.github.io">links</a> ' +
-        'and other HTML tags',
-      showCloseButton: true,
-      showCancelButton: true,
-      focusConfirm: false,
-      confirmButtonText:
-        '<fa-icon [icon]="faHdd"></fa-icon> Great!',
-      confirmButtonAriaLabel: 'Thumbs up, great!',
-      cancelButtonText:
-        '<i class="fa fa-thumbs-down"></i>',
-      cancelButtonAriaLabel: 'Thumbs down'
-    })
+console.log(this.forma.value);
+this.forma.setValue( this.usuario );
+// this.forma.reset(this.usuario);
   }
 }
