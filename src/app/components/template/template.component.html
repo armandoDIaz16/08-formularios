@@ -1,98 +1,136 @@
-<h4> <fa-icon [icon]="deleteIcon"></fa-icon>Formularios <small>template</small></h4>
+<h4>
+    <fa-icon [icon]="deleteIcon"></fa-icon>Formularios <small>template</small></h4>
 <hr>
 <form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate="">
 
-  <div>
+    <div>
 
-    <div class="form-group row">
-      <label class="col-2 col-form-label">Nombre</label>
-      <div class="col-8">
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
 
-        <input class="form-control"
-               type="text"
-               placeholder="Nombre"
-               name="nombre"
-               required 
-               minlength="5"          
-               [ngModel]="usuario.nombre"
-               #nombrehtml="ngModel">
-              
-               <div *ngIf="nombrehtml.errors?.required" class="alert alert-danger" role="alert">
-                Debe completar este campo
-              </div>
-              <div *ngIf="nombrehtml.errors?.minlength" class="alert alert-danger" role="alert">
-                Debe contener min 5 caracteres
-              </div>
-      </div>
+                <input class="form-control" type="text" placeholder="Nombre" name="nombre" required minlength="5" [(ngModel)]="usuario.nombre" #nombrehtml="ngModel">
+
+                <div *ngIf="nombrehtml.errors?.required" class="alert alert-danger" role="alert">
+                    Debe completar este campo
+                </div>
+                <div *ngIf="nombrehtml.errors?.minlength" class="alert alert-danger" role="alert">
+                    Debe contener min 5 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Apellido</label>
+            <div class="col-8">
+
+                <input class="form-control" type="text" placeholder="Apellido" name="apellido" required [(ngModel)]="usuario.apellido" #apellidohtml="ngModel">
+
+                <div *ngIf="apellidohtml.errors?.required" class="alert alert-danger" role="alert">
+                    Debe completar este campo
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div class="form-group row">
-      <label class="col-2 col-form-label">Apellido</label>
-      <div class="col-8">
+        <label class="col-2 col-form-label">Correo</label>
+        <div class="col-md-8">
 
-        <input class="form-control"
-               type="text"
-               placeholder="Apellido"
-               name="apellido"
-               required                
-               [ngModel]="usuario.apellido"
-               #apellidohtml="ngModel">
-              
-               <div *ngIf="apellidohtml.errors?.required" class="alert alert-danger" role="alert">
+            <input class="form-control" type="email" placeholder="Correo electrónico" name="correo" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [(ngModel)]="usuario.correo" #correohtml="ngModel">
+
+            <div *ngIf="correohtml.errors?.required" class="alert alert-danger" role="alert">
                 Debe completar este campo
-              </div>          
-      </div>
-    </div>
-
-  </div>
-
-  <div class="form-group row">
-    <label class="col-2 col-form-label">Correo</label>
-    <div class="col-md-8">
-
-      <input class="form-control"
-             type="email"
-             placeholder="Correo electrónico"
-             name="correo"
-               required 
-               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-               [ngModel]="usuario.correo"
-               #correohtml="ngModel">
-              
-               <div *ngIf="correohtml.errors?.required" class="alert alert-danger" role="alert">
-                Debe completar este campo
-              </div>   
-              <div *ngIf="correohtml.errors?.pattern" class="alert alert-danger" role="alert">
+            </div>
+            <div *ngIf="correohtml.errors?.pattern" class="alert alert-danger" role="alert">
                 Debe introducir un correo válido
-              </div>   
+            </div>
 
+        </div>
     </div>
-  </div>
 
-  <div class="form-group row">
-          <label class="col-2 col-form-label">Pais</label>
-          <div class="col-md-8">
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Pais</label>
+        <div class="col-md-8">
 
-          <select class="custom-select"
-           [(ngModel)]="usuario.pais"
-           name="pais">      
+            <select class="custom-select" [(ngModel)]="usuario.pais" name="pais">
         <option value="">Seleccione una opcion</option>
         <option *ngFor="let pais of paises" [value]="pais.clave">{{pais.nombre}}</option>
-        
+
       </select>
+        </div>
+    </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Sexo</label>
+  <div class="btn-group btn-group-toggle col-md-8" >
+    <label class="btn btn-primary " for="radio2"  [className]="usuario.sexo == 'h' ? 'btn btn-primary focus' : 'btn btn-primary'" >
+      <input
+
+        id="radio2"
+        [(ngModel)]="usuario.sexo"
+        name="sexo"
+        value="h"
+        type="radio"
+        > Hombre
+    </label>
+    <label class="btn btn-danger" for="radio1" [className]="usuario.sexo == 'm' ? 'btn btn-danger focus' : 'btn btn-danger'">
+      <input
+        id="radio1"
+        [(ngModel)]="usuario.sexo"
+        type="radio"
+        name="sexo"
+        value="m"
+        > Mujer
+    </label>
+  </div>
+  </div>
+
+  <!--<div class="form-group row">
+      <label class="col-2 col-form-label">Sexo</label>
+      <div class="col-md-8">
+        <div class="btn-group btn-group-toggle col-md-8" >
+          <input [(ngModel)]="usuario.sexo" type="radio" id="customRadio1" name="sexo" value="h" class="custom-control-input">
+          <label class="btn btn-primary " for="customRadio1">Hombre</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input [(ngModel)]="usuario.sexo" type="radio" id="customRadio2" name="sexo" value="m" class="custom-control-input">
+          <label class="btn btn-danger " for="customRadio2">Mujer</label>
+        </div>
+      </div>
+  </div>-->
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Pais</label>
+    <div class="col-md-8">
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck1" name="acepta_terminos" [(ngModel)]="usuario.acepta_terminos" required>
+        <label class="custom-control-label" for="customCheck1">He verificado la info</label>
+      </div>
     </div>
   </div>
 
-  <div class="form-group row">
-    <label class="col-2 col-form-label">&nbsp;</label>
-    <div class="input-group col-md-8">
-      <button 
-      [disabled]="!forma.valid"
-      type="submit" 
-      class="btn btn-outline-primary">
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+            <button [disabled]="!forma.valid" type="submit" class="btn btn-outline-primary">
+      <fa-icon [icon]="deleteIcon"></fa-icon>
         Guardar
       </button>
+        </div>
     </div>
+  <pre>
+    {{ this.usuario | json }}
+  </pre>
+
+<!--  <div class="custom-control custom-radio">
+    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+    <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
   </div>
+  <div class="custom-control custom-radio">
+    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+    <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+  </div>-->
 
 </form>

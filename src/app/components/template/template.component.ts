@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Usuario } from '../../models/usuario.model';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHdd } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -12,25 +13,27 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 })
 export class TemplateComponent implements OnInit {
 
-  // icons the fontAwesome 
+  // icons the fontAwesome
   faCoffee = faCoffee;
   deleteIcon = faTrashAlt;
-
+  faHdd = faHdd;
   usuario: Usuario = {
     nombre: null,
     apellido: null,
     correo: null,
-    pais: ''
+    pais: '',
+    sexo: '',
+    acepta_terminos: false
   };
 
-paises = [{
-  clave: 'mxn',
-   nombre: 'México'
+  paises = [{
+    clave: 'mxn',
+    nombre: 'México'
   },
   {
     clave: 'usa',
     nombre: 'Estados Unidos'
-}];
+  }];
 
 
   constructor() { }
@@ -38,11 +41,11 @@ paises = [{
   ngOnInit() {
   }
 
-   guardar(forma: NgForm) {
-     console.log("Se ha enviado el formulario");
-     console.log(forma);
-     console.log(forma.value);
-    
+  guardar(forma: NgForm) {
+    // console.log("Se ha enviado el formulario");
+    console.log(forma);
+    console.log(forma.value);
+
   }
 
 }

@@ -3,4 +3,6 @@ export interface Usuario {
     apellido: string;
     correo: string;
     pais: string;
+    sexo: string;
+  acepta_terminos: boolean;
   }
