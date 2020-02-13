@@ -12,6 +12,7 @@ export class DataComponent implements OnInit {
 
   forma: FormGroup;
   faHdd = faHdd;
+  estado:boolean;
 
   usuario :object = {
     nombre : '',
@@ -46,7 +47,7 @@ validaContrasenias(control: FormControl)
 : any
 {
   // console.log(control.value);
-  console.log(this.controls);
+  // console.log(this.controls);
   // console.log(this.forma.controls['password1'].value);
 
 //   if ( control.value !== this.forma.controls['password1'].value ) {

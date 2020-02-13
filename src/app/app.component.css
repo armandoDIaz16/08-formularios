@@ -10,3 +10,14 @@
 .alert{
     margin-top: 3px;
 }
+
+
+p-accordion{
+    background-color: red;
+}
+.ui-accordion-header{
+    background-color: red;
+}
+.ui-accordion-content{
+    background-color: red;
+}

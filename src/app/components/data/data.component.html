@@ -1,3 +1,10 @@
+
+<p>aqui {{this.estado}}</p>
+<p-inputSwitch [(ngModel)]="this.estado" name="estado" ></p-inputSwitch>
+
+<p-accordion> 
+  <p-accordionTab header="{{this.estado}}">
+    
 <h4>Formularios <small>data</small></h4>
 <hr>
 <form [formGroup]="forma" (ngSubmit)="enviarData()" novalidate >
@@ -90,3 +97,108 @@
 
 </form>
 {{forma.valid}}
+
+  </p-accordionTab>
+  <p-accordionTab header="Header 2">
+      Content 2
+  </p-accordionTab>
+  <p-accordionTab header="Header 3">
+      Content 3    
+  </p-accordionTab>
+</p-accordion>
+
+<h4>Formularios <small>data</small></h4>
+<hr>
+<form [formGroup]="forma" (ngSubmit)="enviarData()" novalidate >
+
+  <div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               formControlName="nombre">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               formControlName="apellido">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             formControlName="correo">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Password</label>
+    <div class="col-md-8">
+      <input class="form-control"
+      type="password"
+      placeholder="password"
+      formControlName="password1">
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Repetir</label>
+    <div class="col-md-8">
+      <input class="form-control"
+      type="password"
+      placeholder="Repetir password"
+      formControlName="password2">
+    </div>
+  </div>
+
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="col-md-8" formArrayName="pasatiempos">
+      <input *ngFor="let pasatiempo of forma.controls['pasatiempos'].controls, let i = index"
+      class="form-control"
+             type="text"
+             placeholder=""
+             [formControlName]="i">
+      </div>
+      <button type="button"
+      (click)="agregarItem()"
+       class="btn btn-outline-primary">
+        <fa-icon [icon]="faHdd"></fa-icon> Agregar
+      </button>
+  </div>
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary">
+        <fa-icon [icon]="faHdd"></fa-icon> Guardar
+      </button>
+    </div>
+  </div>
+
+</form>
+{{forma.valid}}
+
+
+<div class="bg-danger ui-accordion ui-accordion-header">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, eos beatae recusandae, corrupti eaque praesentium totam ea eius eveniet iusto nostrum obcaecati fugiat deserunt ratione aperiam architecto explicabo dolorem sed?</div>

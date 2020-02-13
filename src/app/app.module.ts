@@ -10,6 +10,13 @@ import { DataComponent } from './components/data/data.component';
 // Font Awesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+//Ng prime 
+import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+import {InputSwitchModule} from 'primeng/inputswitch';
+// import {MenuItem} from 'primeng/api'; 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +27,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    AccordionModule ,
+    InputSwitchModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
